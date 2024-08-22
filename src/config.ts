@@ -486,6 +486,13 @@ class Config {
 	}
 
 	/**
+	 * Get the value of the `git-graph.repository.subComponent` Extension Setting.
+	 */
+	get subComponent() {
+		return this.getRenamedExtensionSetting('repository.subComponent', 'subComponent', '');
+	}
+
+	/**
 	 * Get the value of the `git-graph.repository.showUncommittedChanges` Extension Setting.
 	 */
 	get showUncommittedChanges() {

@@ -655,7 +655,8 @@ class GitGraphView {
 			commitOrdering: getCommitOrdering(repoState.commitOrdering),
 			remotes: this.gitRemotes,
 			hideRemotes: repoState.hideRemotes,
-			stashes: this.gitStashes
+			stashes: this.gitStashes,
+			subComponent: getSubComponent(repoState.subComponent)
 		});
 	}
 
@@ -3877,6 +3878,12 @@ function getShowTags(repoValue: GG.BooleanOverride) {
 	return repoValue === GG.BooleanOverride.Default
 		? initialState.config.showTags
 		: repoValue === GG.BooleanOverride.Enabled;
+}
+
+function getSubComponent(repoValue: string | null) {
+	return repoValue === null
+		? initialState.config.subComponent
+		: repoValue;
 }
 
 function getIncludeCommitsMentionedByReflogs(repoValue: GG.BooleanOverride) {
