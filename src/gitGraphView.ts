@@ -409,7 +409,7 @@ export class GitGraphView extends Disposable {
 					command: 'loadCommits',
 					refreshId: msg.refreshId,
 					onlyFollowFirstParent: msg.onlyFollowFirstParent,
-					...await this.dataSource.getCommits(msg.repo, msg.branches, msg.authors, msg.maxCommits, msg.showTags, msg.showRemoteBranches, msg.includeCommitsMentionedByReflogs, msg.onlyFollowFirstParent, msg.commitOrdering, msg.remotes, msg.hideRemotes, msg.stashes, msg.subComponent)
+					...await this.dataSource.getCommits(msg.repo, msg.branches, msg.authors, msg.maxCommits, msg.showTags, msg.showRemoteBranches, msg.includeCommitsMentionedByReflogs, msg.onlyFollowFirstParent, msg.commitOrdering, msg.remotes, msg.hideRemotes, msg.stashes, (msg.enableSubComponent ? msg.subComponent : './'))
 				});
 				break;
 			case 'loadConfig':
@@ -694,6 +694,7 @@ export class GitGraphView extends Disposable {
 				showRemoteBranches: config.showRemoteBranches,
 				showStashes: config.showStashes,
 				showTags: config.showTags,
+				enableSubComponent: config.enableSubComponent,
 				subComponent: config.subComponent
 			},
 			lastActiveRepo: this.extensionState.getLastActiveRepo(),

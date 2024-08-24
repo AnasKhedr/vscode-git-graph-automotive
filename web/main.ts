@@ -656,6 +656,7 @@ class GitGraphView {
 			remotes: this.gitRemotes,
 			hideRemotes: repoState.hideRemotes,
 			stashes: this.gitStashes,
+			enableSubComponent: getEnableSubComponent(repoState.enableSubComponent),
 			subComponent: getSubComponent(repoState.subComponent)
 		});
 	}
@@ -3877,6 +3878,12 @@ function getShowStashes(repoValue: GG.BooleanOverride) {
 function getShowTags(repoValue: GG.BooleanOverride) {
 	return repoValue === GG.BooleanOverride.Default
 		? initialState.config.showTags
+		: repoValue === GG.BooleanOverride.Enabled;
+}
+
+function getEnableSubComponent(repoValue: GG.BooleanOverride) {
+	return repoValue === GG.BooleanOverride.Default
+		? initialState.config.enableSubComponent
 		: repoValue === GG.BooleanOverride.Enabled;
 }
 

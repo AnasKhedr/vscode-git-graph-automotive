@@ -37,6 +37,7 @@ export const DEFAULT_REPO_STATE: GitRepoState = {
 	showStashes: BooleanOverride.Default,
 	showTags: BooleanOverride.Default,
 	workspaceFolderIndex: null,
+	enableSubComponent: BooleanOverride.Default,
 	subComponent: null
 };
 

@@ -151,14 +151,13 @@ class SettingsWidget {
 				? escapeHtml(formatCommaSeparatedList(initialBranches))
 				: 'Show All';
 
-			const SubPathStr = escapeHtml(this.repo.subComponent || '');
+			const SubPathStr = escapeHtml(this.repo.subComponent || 'None');
 
 			let html = '<div class="settingsSection general"><h3>General</h3>' +
 				'<table>' +
 				'<tr class="lineAbove"><td class="left">Name:</td><td class="leftWithEllipsis" title="' + escapedRepoName + (this.repo.name === null ? ' (Default Name from the File System)' : '') + '">' + escapedRepoName + '</td><td class="btns right"><div id="editRepoName" title="Edit Name' + ELLIPSIS + '">' + SVG_ICONS.pencil + '</div>' + (this.repo.name !== null ? ' <div id="deleteRepoName" title="Delete Name' + ELLIPSIS + '">' + SVG_ICONS.close + '</div>' : '') + '</td></tr>' +
 				'<tr class="lineAbove lineBelow"><td class="left">Initial Branches:</td><td class="leftWithEllipsis" title="' + initialBranchesStr + ' (' + (initialBranchesLocallyConfigured ? 'Local' : 'Global') + ')">' + initialBranchesStr + '</td><td class="btns right"><div id="editInitialBranches" title="Edit Initial Branches' + ELLIPSIS + '">' + SVG_ICONS.pencil + '</div>' + (initialBranchesLocallyConfigured ? ' <div id="clearInitialBranches" title="Clear Initial Branches' + ELLIPSIS + '">' + SVG_ICONS.close + '</div>' : '') + '</td></tr>' +
-				// `'<tr class="lineAbove lineBelow"><td class="left">Sub Path:</td><td class="leftWithEllipsis"><input type="text" id="subComponenthInput" value="' + (this.repo.subComponent || '') + '" placeholder="Enter sub path" /></td><td class="btns right"></td></tr>' +
-				'<tr class="lineAbove"><td class="left">Component sub-path:</td><td class="leftWithEllipsis" title="' + SubPathStr + (this.repo.subComponent === null ? ' (Default Path from the File System)' : '') + SubPathStr + '">' + '</td><td class="btns right"><div id="subComponenthInput" title="Edit Path' + ELLIPSIS + '">' + SVG_ICONS.pencil + '</div>' + (this.repo.subComponent !== null ? ' <div id="deleteSubComponentPath" title="Delete Path' + ELLIPSIS + '">' + SVG_ICONS.close + '</div>' : '') + '</td></tr>' +
+				'<tr class="lineAbove"><td class="left">Component sub-path:</td><td class="leftWithEllipsis" title="' + SubPathStr + (this.repo.subComponent === '' ? ' (Default No sun component path)' : '') + '">' + SubPathStr + '</td><td class="btns right"><div id="subComponenthInput" title="Edit Path' + ELLIPSIS + '">' + SVG_ICONS.pencil + '</div>' + (this.repo.subComponent !== null ? ' <div id="deleteSubComponentPath" title="Delete Path' + ELLIPSIS + '">' + SVG_ICONS.close + '</div>' : '') + '<label id="settingsEnableSubComponent"><input type="checkbox" id="settingsEnableSubComponentCheckbox" tabindex="-1"><span class="customCheckbox"></span></lable></td></tr>' +
 				'</table>' +
 				'<label id="settingsShowStashes"><input type="checkbox" id="settingsShowStashesCheckbox" tabindex="-1"><span class="customCheckbox"></span>Show Stashes</label><br/>' +
 				'<label id="settingsShowTags"><input type="checkbox" id="settingsShowTagsCheckbox" tabindex="-1"><span class="customCheckbox"></span>Show Tags</label><br/>' +
@@ -322,16 +321,15 @@ class SettingsWidget {
 				this.view.refresh(true);
 			});
 
-			// document.getElementById('editRepoName')!.addEventListener
-			// const subPathElem = <HTMLInputElement>document.getElementById('subComponenthInput');
-			// subPathElem.defaultValue = getSubComponent(this.repo.subComponent);
-			// subPathElem.addEventListener('change', () => {
-			// 	if (this.currentRepo === null) return;
-			// 	const elem = <HTMLInputElement | null>document.getElementById('subComponenthInput');
-			// 	if (elem === null) return;
-			// 	this.view.saveRepoStateValue(this.currentRepo, 'subComponent', elem.defaultValue);
-			// 	this.view.refresh(true);
-			// });
+			const enableSubCompElem = <HTMLInputElement>document.getElementById('settingsEnableSubComponentCheckbox');
+			enableSubCompElem.checked = getEnableSubComponent(this.repo.enableSubComponent);
+			enableSubCompElem.addEventListener('change', () => {
+				if (this.currentRepo === null) return;
+				const elem = <HTMLInputElement | null>document.getElementById('settingsEnableSubComponentCheckbox');
+				if (elem === null) return;
+				this.view.saveRepoStateValue(this.currentRepo, 'enableSubComponent', elem.checked ? GG.BooleanOverride.Enabled : GG.BooleanOverride.Disabled);
+				this.view.refresh(true);
+			});
 
 			document.getElementById('subComponenthInput')!.addEventListener('click', () => {
 				if (this.currentRepo === null || this.repo === null) return;

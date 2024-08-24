@@ -221,6 +221,7 @@ export interface GitRepoState {
 	showStashes: BooleanOverride;
 	showTags: BooleanOverride;
 	workspaceFolderIndex: number | null;
+	enableSubComponent: BooleanOverride;
 	subComponent: string | null;
 }
 
@@ -266,6 +267,7 @@ export interface GitGraphViewConfig {
 	readonly showStashes: boolean;
 	readonly showTags: boolean;
 	readonly stickyHeader: boolean;
+	readonly enableSubComponent: boolean,
 	readonly subComponent: string;
 }
 
@@ -919,6 +921,7 @@ export interface RequestLoadCommits extends RepoRequest {
 	readonly remotes: ReadonlyArray<string>;
 	readonly hideRemotes: ReadonlyArray<string>;
 	readonly stashes: ReadonlyArray<GitStash>;
+	readonly enableSubComponent: boolean;
 	readonly subComponent: string;
 }
 export interface ResponseLoadCommits extends ResponseWithErrorInfo {
