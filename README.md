@@ -14,6 +14,8 @@ Main improvements:
 ## Features
 
 * Git Graph View:
+    * Sub-Component commits filtering
+        * you can select a sub-component directory (like in adaptive autosar) and filter by commits changing files in this directory.
     * Display:
         * Local & Remote Branches
         * Local Refs: Heads, Tags & Remotes
