@@ -479,10 +479,21 @@ class Config {
 	}
 
 	/**
-	 * Get the value of the `git-graph.repository.showTags` Extension Setting.
+	 * Get the value of the `git-graph.repository.enableSubComponent` Extension Setting.
 	 */
+	get enableSubComponent() {
+		return !!this.getRenamedExtensionSetting('repository.enableSubComponent', 'enableSubComponent', true);
+	}
+
 	get showTags() {
 		return !!this.getRenamedExtensionSetting('repository.showTags', 'showTags', true);
+	}
+
+	/**
+	 * Get the value of the `git-graph.repository.subComponent` Extension Setting.
+	 */
+	get subComponent() {
+		return this.getRenamedExtensionSetting('repository.subComponent', 'subComponent', '');
 	}
 
 	/**

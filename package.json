@@ -1,7 +1,7 @@
 {
-	"name": "git-graph-2",
-	"displayName": "Git Graph 2",
-	"version": "1.31.1",
+	"name": "git-graph-3",
+	"displayName": "Git Graph 3",
+	"version": "1.31.3",
 	"publisher": "hansu",
 	"author": {
 		"name": "Michael Hutchison",
@@ -1531,7 +1531,8 @@
 		"test-and-report-coverage": "jest --verbose --coverage"
 	},
 	"dependencies": {
-		"iconv-lite": "0.5.0"
+		"iconv-lite": "0.5.0",
+		"vsce": "^2.15.0"
 	},
 	"devDependencies": {
 		"@types/babel__core": "7.1.18",
