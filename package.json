@@ -2,26 +2,29 @@
 	"name": "git-graph-3",
 	"displayName": "Git Graph 3",
 	"version": "1.31.3",
-	"publisher": "hansu",
+	"publisher": "AnasKhedr",
 	"author": {
-		"name": "Michael Hutchison",
-		"email": "mhutchie@16right.com"
+		"name": "Anas Khedr",
+		"email": "anaskhedr47@gmail.com"
 	},
-	"description": "Fork of mhutchie's Git Graph with further improvements.",
+	"description": "Fork of hansu's Git Graph filter sub-components, this is useful for adaptive autosar repo approach.",
 	"keywords": [
 		"git",
 		"graph",
 		"visualise",
 		"diff",
-		"action"
+		"action",
+		"automotive",
+		"autosar",
+		"adaptive autosar"
 	],
 	"categories": [
 		"Other"
 	],
-	"homepage": "https://github.com/hansu/vscode-git-graph",
+	"homepage": "https://github.com/AnasKhedr/vscode-git-graph-automotive",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/hansu/vscode-git-graph.git"
+		"url": "https://github.com/AnasKhedr/vscode-git-graph-automotive"
 	},
 	"bugs": {
 		"url": "https://github.com/hansu/vscode-git-graph/issues"
