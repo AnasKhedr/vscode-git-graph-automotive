@@ -1579,8 +1579,19 @@ export class DataSource extends Disposable {
 		}
 		args.push('--');
 
+		// if not empty
 		if (subComponent !== '') {
-			args.push(subComponent);
+			// spit on whitespaces
+			const components_paths: string[] = subComponent.split(' ');
+			if (components_paths.length) {
+				for (let i = 0; i < components_paths.length; i++) {
+					if (components_paths[i] !== '') {
+						args.push(components_paths[i]);
+					}
+				}
+			} else {
+				args.push(subComponent);
+			}
 		}
 
 
